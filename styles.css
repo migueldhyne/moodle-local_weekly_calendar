@@ -1,0 +1,257 @@
+.hours {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 75px);
+    top: 74px;
+    left: -20px;
+}
+
+.pdf * {
+    font-family: Helvetica;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.pdf .hours {
+    left: 0px;
+    top: 72px;
+    height: unset;
+}
+
+.detailed {
+    height: 1115px;
+}
+
+.pdf .detailed {
+    margin-left: 36px;
+    height: unset;
+}
+
+#region-main .maincalendar .calendarwrapper .detailed .d-none.d-md-block.hidden-phone.text-xs-center, .pdf .detailed .d-none.d-md-block.hidden-phone.text-xs-center {
+    position: relative;
+    overflow: initial;
+}
+
+#region-main .maincalendar .calendarwrapper .hours table, .pdf .hours table {
+    width: 100%;
+}
+
+#region-main .maincalendar .calendarwrapper .hours td > div, .pdf .hours td > div {
+    height:initial;
+}
+
+#region-main .maincalendar .calendarwrapper .hours tr {
+    height:80px;
+    border-bottom: solid 1px #ddd;
+}
+
+.pdf .hours tr {
+    height: unset;
+    border-bottom: solid 1px #ddd;
+}
+
+.pdf .hours td {
+    height: 48px;
+}
+
+#region-main .maincalendar .calendarwrapper .detailed td > div {
+    height: 1040px;
+}
+
+.pdf .detailed td > div {
+    height: 653px;
+}
+
+#region-main .maincalendar .calendarwrapper .detailed ul li {
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    left: 30px;
+    height: 80px;
+    background-color: rgba(210,210,210,.7);
+    border: solid 1px #939393;
+}
+
+#region-main .maincalendar .printbtncontainer{
+    width: 100%;
+    text-align: right;
+    font-size: 2em;
+    margin-bottom: 30px;
+    padding-right: 15px;
+}
+
+.pdf {
+    position: relative;
+}
+
+.pdf .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.pdf h2 {
+    font-size: 24px;
+
+}
+
+.pdf table {
+    border-collapse: collapse;
+}
+
+.pdf td > div {
+    overflow: hidden;
+}
+
+.pdf a.arrow_link.previous, .pdf a.arrow_link.next {
+    display: none;
+}
+
+.pdf .calendartable {
+    table-layout: fixed;
+}
+
+.pdf .calendartable th, .calendartable td {
+    width: 14%;
+    vertical-align: top;
+    text-align: center;
+    border: 0;
+}
+
+.pdf .calendartable td, .pdf .calendartable li {
+    padding: 4px;
+}
+
+.pdf .calendarmonth {
+    width: 100%;
+    margin: 10px auto;
+    margin-bottom: 10px;
+}
+
+.pdf .controls {
+    width: 98%;
+    margin: 0px auto;
+}
+
+.pdf span.hide, div.hide, .hidden {
+    display: none;
+}
+
+.pdf .calendar-controls .current {
+    text-align: center;
+    margin: 0;
+}
+
+.pdf .d-md-none {
+    display: none !important;
+}
+
+.pdf .calendarmonth th {
+    text-align: left;
+    padding-left: 16px;
+}
+
+.pdf .calendarmonth td, .pdf .calendarmonth th {
+    border: 1px dotted #5e5e5e;
+}
+
+.pdf .calendarmonth td .day-number-circle {
+    display: inline-block;
+    line-height: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.pdf .calendarmonth td.today .day-number-circle {
+    border-radius: 50%;
+    color: #fff;
+    background-color: #447198;
+}
+
+.pdf .calendarmonth td .day-number-circle .day-number {
+    display: inline-block;
+    padding-top: 2px;
+    width: 100%;
+    text-align: center;
+}
+
+.pdf .detailed .header {
+    overflow: hidden;
+}
+
+.pdf .detailed .header span {
+    font-weight: bold;
+}
+
+.pdf .calendarmonth ul {
+    margin: 0;
+    padding: 0;
+}
+
+.pdf .calendarmonth ul li {
+    padding-top: 0;
+    margin-top: -5px;
+    position: absolute;
+    width: 105px;
+    top: 0;
+    right: 0;
+    left: 30px;
+    height: 48px;
+    list-style-type: none;
+    line-height: 1.2em;
+    text-align: left;
+    background-color: rgba(210,210,210,.7);
+    border: solid 1px #939393;
+}
+
+
+
+.pdf .calendarmonth ul li .calendar-circle {
+    width: 8px;
+    height: 8px;
+    margin-top: 2px;
+    border-radius: 6px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.pdf .calendarmonth ul li .calendar-circle.calendar_event_course {
+    background-color: #ffd3bd;
+    border: 2px solid #d34600;
+}
+
+.pdf .calendarmonth ul li .calendar-circle.calendar_event_user {
+    background-color: #dce7ec;
+    border: 2px solid #4e7c91;
+}
+
+.pdf .calendarmonth ul li .calendar-circle.calendar_event_group {
+    background-color: #fee7ae;
+    border: 2px solid #9a6e02;
+}
+
+.pdf .calendarmonth ul li .calendar-circle.calendar_event_category {
+    background-color: #e0cbe0;
+    border: 2px solid #9e619f;
+}
+
+.pdf .calendarmonth ul li .calendar-circle.calendar_event_site {
+    background-color: #d6f8cd;;
+    border: 2px solid #2b8713;
+}
+
+.pdf .calendarmonth ul li .eventname {
+    display: block;
+    margin-top: -16px;
+    margin-left: 18px;
+    line-height: 1em;
+    font-size: 12px;
+}

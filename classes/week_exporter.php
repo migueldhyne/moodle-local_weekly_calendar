@@ -17,12 +17,12 @@
 /**
  * Contains class for displaying the week view.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_advanced_calendar;
+namespace local_weekly_calendar;
 
 use core\external\exporter;
 use renderer_base;
@@ -31,7 +31,7 @@ use moodle_url;
 /**
  * Class for displaying the week view.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -88,7 +88,7 @@ class week_exporter extends exporter {
         $this->calendar = $calendar;
         $this->firstdayofweek = $type->get_starting_weekday();
 
-        $this->url = new moodle_url('/local/advanced_calendar/view.php', [
+        $this->url = new moodle_url('/local/weekly_calendar/view.php', [
                 'view' => 'week',
                 'time' => $calendar->time,
             ]);
@@ -372,7 +372,7 @@ class week_exporter extends exporter {
 
             $daydata['isweekend'] = !!($weekend & (1 << ($daydata['wday'] % $numberofdaysinweek)));
 
-            $day = new \local_advanced_calendar\external\week_day_exporter($this->calendar, $daydata, [
+            $day = new \local_weekly_calendar\external\week_day_exporter($this->calendar, $daydata, [
                 'events' => $events,
                 'cache' => $this->related['cache'],
                 'type' => $this->related['type'],

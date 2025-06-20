@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * PDF export for local_advanced_calendar plugin
+ * PDF export for local_weekly_calendar plugin
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -50,10 +50,10 @@ if (empty($time)) {
 // 6. Prepare calendar data and renderer
 $calendar = calendar_information::create($time, $courseid, $categoryid);
 $renderer = $PAGE->get_renderer('core_calendar');
-list($data, ) = local_advanced_calendar_get_view($calendar, $view, true, false, $lookahead);
+list($data, ) = local_weekly_calendar_get_view($calendar, $view, true, false, $lookahead);
 
 // 7. Render PDF-specific Mustache template
-$template = 'local_advanced_calendar/calendar_week_pdf';
+$template = 'local_weekly_calendar/calendar_week_pdf';
 $content  = $renderer->render_from_template($template, $data);
 
 // 8. Inline CSS for PDF output

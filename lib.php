@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * local_advanced_calendar plugin
+ * local_weekly_calendar plugin
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,7 +32,7 @@
  * @param   int     $lookahead Overwrites site and users's lookahead setting.
  * @return  array[array, string]
  */
-function local_advanced_calendar_get_view(\calendar_information $calendar,
+function local_weekly_calendar_get_view(\calendar_information $calendar,
                                             $view,
                                             $includenavigation = true,
                                             bool $skipevents = false,
@@ -61,7 +61,7 @@ function local_advanced_calendar_get_view(\calendar_information $calendar,
         $date->setTimestamp($tstart);
         $date->modify('+' . $weekdays . ' day');
 
-        $template = 'local_advanced_calendar/calendar_week';
+        $template = 'local_weekly_calendar/calendar_week';
     } else if ($view === 'upcoming' || $view === 'upcoming_mini') {
         // Number of days in the future that will be used to fetch events.
         if (!$lookahead) {
@@ -170,7 +170,7 @@ function local_advanced_calendar_get_view(\calendar_information $calendar,
         $month->set_showcoursefilter(($view == "month" || $view == "monthblock"));
         $data = $month->export($renderer);
     } else if ($view == "week") {
-        $week = new local_advanced_calendar\week_exporter($calendar, $type, $related);
+        $week = new local_weekly_calendar\week_exporter($calendar, $type, $related);
         $week->set_includenavigation($includenavigation);
         $week->set_initialeventsloaded(!$skipevents);
         $week->set_showcoursefilter(true);

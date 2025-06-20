@@ -1,50 +1,82 @@
-# local\_advanced\_calendar
+# Weekly Calendar (Advanced) — Moodle Local Plugin
 
-This plugin provides a weekly calendar view and allows you to export each week as a PDF document.
+**Advanced weekly view and PDF export for your Moodle calendar!**
+
+---
+
+## Description
+
+The **Weekly Calendar** plugin provides an enhanced weekly view of events in your Moodle site. 
+It also allows you to export your weekly schedule as a well-formatted PDF. This plugin is perfect for teachers, 
+students, and administrative staff who want a clear, printable overview of their weekly activities.
+
+---
 
 ## Features
 
-* Monthly and weekly calendar views
-* Export and print in PDF format
-* Option to customize colors and filters
+- **Weekly view** of all Moodle calendar events (courses, activities, personal events, etc.)
+- **PDF export** of your weekly calendar (requires [local_dompdf](https://moodle.org/plugins/local_dompdf))
+- Modern and responsive design
+
+---
 
 ## Requirements
 
-* Moodle **4.2** or higher
-* PHP **8.0** or higher
-* **Dompdf** (via the local\_dompdf plugin) for PDF rendering:
-  [https://moodle.org/plugins/local\_dompdf](https://moodle.org/plugins/local_dompdf)
+- Moodle **4.0.2** or newer
+- [local_dompdf](https://moodle.org/plugins/local_dompdf) plugin (for PDF export)
+
+---
 
 ## Installation
 
-1. Unzip the archive and place the `advanced_calendar` folder into `local/advanced_calendar` of your Moodle instance.
-2. Log in as an administrator and trigger the database upgrade (Administration → Notifications).
-3. Check the settings in Administration → Plugins → Local plugins → Advanced Calendar.
+1. **Download** this plugin and unzip the contents into your Moodle directory:  
+   `your-moodle-root/local/weekly_calendar`
+2. Ensure that the [local_dompdf](https://moodle.org/plugins/local_dompdf) plugin is also installed.
+3. **Go to your Moodle site** as an admin. The installation process will begin automatically.
+4. **Complete** the upgrade steps in the Moodle admin interface.
+
+---
 
 ## Usage
 
-* **Monthly view** (default):
-  `https://<your-moodle>/calendar/view.php`
+- Access the weekly calendar by visiting:  
+  `https://your-moodle-site/local/weekly_calendar/view.php?view=week`
+- Use the PDF export button to download a printable version of your weekly schedule.
 
-* **Weekly view**:
-  `https://<your-moodle>/local/advanced_calendar/view.php?view=week`
+---
 
-## ADVANCED
+## Screenshots
 
-In order to obtain a correct print rendering in PDF format, this plugin requires the installation of the Dompdf library ([https://moodle.org/plugins/local\_dompdf](https://moodle.org/plugins/local_dompdf)).
+> _Add screenshots here if desired. For example, upload images to your repository and link them!_
 
-To access the calendar in weekly mode, use the following URL:
+---
 
-[https://<your-moodle>/local/advanced\_calendar/view.php?view=week](https://XXX/local/advanced_calendar/view.php?view=week)
+## Languages
 
-Enjoy!
+- English (`lang/en/local_advanced_calendar.php`)
+- French (`lang/fr/local_advanced_calendar.php`)
 
-## Contribute
+---
 
-Contributions are welcome!
-– Open an issue or pull request on the Git repository.
-– Make sure to follow Moodle coding standards.
+## Troubleshooting
 
-## License
+- Make sure the [local_dompdf](https://moodle.org/plugins/local_dompdf) plugin is installed and enabled for PDF export.
+- If you experience blank pages or errors, check your server's PHP error logs for clues.
+- For style or rendering issues, clear your browser cache and try again.
 
-This plugin is distributed under the **GPL v3** license.
+---
+
+## Credits
+
+- **Authors**: Patrick ROCHET <prochet.94@free.fr> & Miguël DHYNE <miguel.dhyne@gmail.com>
+- Licensed under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
+
+---
+
+## Contributing & Feedback
+
+Pull requests, bug reports, and suggestions are welcome!
+
+---
+
+Enjoy your improved Moodle calendar experience!

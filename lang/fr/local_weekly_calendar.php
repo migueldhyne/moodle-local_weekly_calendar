@@ -15,18 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the version details.
+ * English strings for local_weekly_calendar.
  *
  * @package     local_weekly_calendar
- * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
+ * @copyright   2025 Patrick ROCHET <prochet.94@free.fr> & Miguël Dhyne <miguel.dhyne@gmail.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component      = 'local_weekly_calendar';
-$plugin->version        = 2025062001;
-$plugin->release        = '4.0.2';
-$plugin->requires       = 2022041902; // 4.0.2
-$plugin->maturity       = MATURITY_STABLE;
-$plugin->dependencies   = ['local_dompdf' => 2021062802];
+$string['pluginname'] = 'Calendrier hebdomadaire';
+$string['weeklyview'] = 'Vue hebdomadaire';

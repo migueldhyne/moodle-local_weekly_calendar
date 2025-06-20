@@ -17,12 +17,12 @@
 /**
  * Contains event class for displaying the day view.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_advanced_calendar\external;
+namespace local_weekly_calendar\external;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -35,7 +35,7 @@ use moodle_url;
 /**
  * Class for displaying the day view.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -131,7 +131,7 @@ class day_exporter extends exporter {
                 'optional' => true,
             ],
             'events' => [
-                'type' => \local_advanced_calendar\external\calendar_event_exporter::read_properties_definition(),
+                'type' => \local_weekly_calendar\external\calendar_event_exporter::read_properties_definition(),
                 'multiple' => true,
             ],
             'hasevents' => [
@@ -196,7 +196,7 @@ class day_exporter extends exporter {
             $context = $cache->get_context($event);
             $course = $cache->get_course($event);
             $moduleinstance = $cache->get_module_instance($event);
-            $exporter = new \local_advanced_calendar\external\calendar_event_exporter($event, [
+            $exporter = new \local_weekly_calendar\external\calendar_event_exporter($event, [
                 'context' => $context,
                 'course' => $course,
                 'moduleinstance' => $moduleinstance,
@@ -280,7 +280,7 @@ class day_exporter extends exporter {
         $nexttime = strtotime('+1 day', $time);
 
         // Building the basic URL.
-        $baseurl = new \moodle_url('/local/advanced_calendar/view.php', [
+        $baseurl = new \moodle_url('/local/weekly_calendar/view.php', [
             'id' => $courseid,
             // Add other parameters if necessary.
             'view' => 'day',

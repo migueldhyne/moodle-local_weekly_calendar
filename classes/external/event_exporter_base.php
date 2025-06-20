@@ -17,12 +17,12 @@
 /**
  * Contains event class for displaying a calendar event.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_advanced_calendar\external;
+namespace local_weekly_calendar\external;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -38,11 +38,12 @@ use core_course\external\course_summary_exporter;
 use core\external\coursecat_summary_exporter;
 use renderer_base;
 use moodle_url;
+use core_calendar\output\humantimeperiod;
 
 /**
  * Class for displaying a calendar event.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -474,8 +475,32 @@ class event_exporter_base extends exporter {
                 'time' => $timesort]);
         $viewurl->set_anchor('event_' . $event->get_id());
         $values['viewurl'] = $viewurl->out(false);
-        $values['formattedtime'] = calendar_format_event_time($legacyevent, time(), null, false,
-                $timesort);
+
+        global $OUTPUT;
+
+        $values['formattedtime'] = '';
+
+        if (class_exists('\core_calendar\output\humantimeperiod')
+            && method_exists('\core_calendar\output\humantimeperiod', 'create_from_timestamp')) {
+            // Moodle 5.0+ new API.
+            $start = $legacyevent->timestart;
+            // Some events have timeend, others use timeduration.
+            $end = !empty($legacyevent->timeend)
+                 ? $legacyevent->timeend
+                 : ($start + ($legacyevent->timeduration ?? 0));
+            // Create and render the human time period.
+            $humantp = humantimeperiod::create_from_timestamp($start, $end);
+            $values['formattedtime'] = $OUTPUT->render($humantp);
+        } else {
+            // Fallback for Moodle < 5.0 (still deprecated but works).
+            $values['formattedtime'] = calendar_format_event_time(
+                $legacyevent,
+                time(),
+                null,
+                false,
+                $timesort
+            );
+        }
         $values['formattedlocation'] = calendar_format_event_location($legacyevent);
 
         if ($group = $event->get_group()) {

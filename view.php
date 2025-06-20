@@ -17,7 +17,7 @@
 /**
  * Display the calendar page.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,7 +36,7 @@ $year = optional_param('cal_y', 0, PARAM_INT);
 $time = optional_param('time', 0, PARAM_INT);
 $lookahead = optional_param('lookahead', null, PARAM_INT);
 
-$url = new moodle_url('/local/advanced_calendar/view.php');
+$url = new moodle_url('/local/weekly_calendar/view.php');
 
 // If a day, month and year were passed then convert it to a timestamp. If these were passed
 // then we can assume the day, month and year are passed as Gregorian, as no where in core
@@ -130,7 +130,7 @@ echo $renderer->start_layout();
 echo html_writer::start_tag('div', ['class' => 'heightcontainer', 'data-calendar-type' => 'main-block']);
 
 
-list($data, $template) = local_advanced_calendar_get_view($calendar, $view, true, false, $lookahead);
+list($data, $template) = local_weekly_calendar_get_view($calendar, $view, true, false, $lookahead);
 
 if ($view == "week" || $view == "month") {
     echo $renderer->render_from_template($template, $data);

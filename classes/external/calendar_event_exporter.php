@@ -17,12 +17,12 @@
 /**
  * Contains event class for displaying a calendar event.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_advanced_calendar\external;
+namespace local_weekly_calendar\external;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -33,11 +33,11 @@ require_once($CFG->dirroot . '/course/lib.php');
 /**
  * Class for displaying a calendar event.
  *
- * @package     local_advanced_calendar
+ * @package     local_weekly_calendar
  * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class calendar_event_exporter extends \local_advanced_calendar\external\event_exporter_base {
+class calendar_event_exporter extends \local_weekly_calendar\external\event_exporter_base {
 
     /**
      * Return the list of additional properties.

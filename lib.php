@@ -23,14 +23,12 @@
  */
 
 /**
- * Get the calendar view output.
+ * Main external API callback to fetch calendar data.
  *
- * @param   \calendar_information $calendar The calendar being represented
- * @param   string  $view The type of calendar to have displayed
- * @param   bool    $includenavigation Whether to include navigation
- * @param   bool    $skipevents Whether to load the events or not
- * @param   int     $lookahead Overwrites site and users's lookahead setting.
- * @return  array[array, string]
+ * @param string   $view      Which view to return, e.g. 'week'.
+ * @param int      $startdate Unix timestamp for the view start.
+ * @param int|null $userid    User ID to filter events, or null for current user.
+ * @return array              Data ready for the exporter.
  */
 function local_weekly_calendar_get_view(\calendar_information $calendar,
                                             $view,

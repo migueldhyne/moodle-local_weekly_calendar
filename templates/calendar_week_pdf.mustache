@@ -31,12 +31,9 @@
     {
     }
 }}
-<html>
-    <body>
-        <div class="pdf">
-            <div id="calendar-month-{{uniqid}}-{{calendarinstanceid}}" data-template="core_calendar/month_detailed">
-                {{> local_weekly_calendar/week_detailed_pdf}}
-            </div>
-        </div>
-    </body>
-</html>
+
+<div class="pdf">
+    <div id="calendar-month-{{uniqid}}-{{calendarinstanceid}}" data-template="core_calendar/month_detailed">
+        {{> local_weekly_calendar/week_detailed_pdf}}
+    </div>
+</div>

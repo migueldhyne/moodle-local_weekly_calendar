@@ -398,9 +398,11 @@ class week_exporter extends exporter {
     }
 
     /**
-     * Get the week data.
+     * Fetches all the events for a given week.
      *
-     * @return array The week data.
+     * @param int    $startday Timestamp for the first day of the week.
+     * @param string $view     Which view to generate (e.g. 'week', 'detailed').
+     * @return array           An array of day-by-day event data.
      */
     protected function get_week_data($when) {
         $type = $this->related['type'];
@@ -426,9 +428,11 @@ class week_exporter extends exporter {
     }
 
     /**
-     * Get the period name.
+     * Builds a human-readable name for a date period.
      *
-     * @return string
+     * @param int $start Timestamp for period start.
+     * @param int $end   Timestamp for period end.
+     * @return string    The formatted period name (e.g. "Mar 1 – Mar 7, 2025").
      */
     protected function get_period_name($starttime) {
         $periodname = "";
@@ -460,7 +464,7 @@ class week_exporter extends exporter {
      */
     public function set_includenavigation($include) {
         $this->includenavigation = $include;
-
+g
         return $this;
     }
 

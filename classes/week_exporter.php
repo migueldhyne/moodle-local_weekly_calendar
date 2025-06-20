@@ -396,13 +396,12 @@ class week_exporter extends exporter {
             'type' => '\core_calendar\type_base',
         ];
     }
-
     /**
      * Fetches all the events for a given week.
      *
-     * @param int    $startday Timestamp for the first day of the week.
-     * @param string $view     Which view to generate (e.g. 'week', 'detailed').
-     * @return array           An array of day-by-day event data.
+     * @param int $startday Timestamp for the first day of the week.
+     * @param string $view Which view to generate (e.g. 'week', 'detailed').
+     * @return array An array of day-by-day event data.
      */
     protected function get_week_data($when) {
         $type = $this->related['type'];
@@ -464,7 +463,6 @@ class week_exporter extends exporter {
      */
     public function set_includenavigation($include) {
         $this->includenavigation = $include;
-g
         return $this;
     }
 

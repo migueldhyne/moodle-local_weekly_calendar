@@ -18,7 +18,7 @@
  * English strings for local_weekly_calendar.
  *
  * @package     local_weekly_calendar
- * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
+ * @copyright   2025 Patrick ROCHET <prochet.94@free.fr> & Miguël Dhyne <miguel.dhyne@gmail.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

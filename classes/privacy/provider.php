@@ -17,14 +17,12 @@
 /**
  * Privacy class for the block_pluginname plugin.
  *
- * @package   block_pin_user
- * @copyright 2025, Miguël Dhyne <miguel.dhyne@gmail.com>
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     local_weekly_calendar
+ * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace block_pin_user\privacy;
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Privacy provider for the Pin User block.

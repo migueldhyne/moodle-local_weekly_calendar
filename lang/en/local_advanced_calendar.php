@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * English strings for local_advanced_calendar.
+ * English strings for local_weekly_calendar.
  *
- * @package     local_advanced_calendar
- * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
+ * @package     local_weekly_calendar
+ * @copyright   2025 Patrick ROCHET <prochet.94@free.fr> & Miguël Dhyne <miguel.dhyne@gmail.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Advanced calendar';
+$string['pluginname'] = 'Weekly calendar';
 $string['weeklyview'] = 'Weekly view calendar';

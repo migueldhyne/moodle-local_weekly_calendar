@@ -25,10 +25,12 @@
 /**
  * Main external API callback to fetch calendar data.
  *
- * @param string   $view      Which view to return, e.g. 'week'.
- * @param int      $startdate Unix timestamp for the view start.
- * @param int|null $userid    User ID to filter events, or null for current user.
- * @return array              Data ready for the exporter.
+ * @param \calendar_information $calendar The calendar information object.
+ * @param string $view Which view to return, e.g. 'week', 'month', etc.
+ * @param bool $includenavigation Whether navigation should be included in the output.
+ * @param bool $skipevents Whether to skip fetching events.
+ * @param int|null $lookahead Number of days to look ahead for upcoming events (used in 'upcoming' view), or null for default.
+ * @return array Data ready for the exporter and the name of the template to use.
  */
 function local_weekly_calendar_get_view(\calendar_information $calendar,
                                             $view,

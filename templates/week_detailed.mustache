@@ -18,28 +18,20 @@
     @template calendar/month_detailed
 
     Calendar month view.
-
     The purpose of this template is to render the month view.
-
-    Classes required for JS:
-    * none
-
-    Data attributes required for JS:
-    * none
-
-    Example context (json):
-    {
-    }
+    Classes required for JS: none
+    Data attributes required for JS: none
+    Example context (json): {}
 }}
-<div{{!
-    }} class="calendarwrapper"{{!
-    }}{{#courseid}} data-courseid="{{courseid}}"{{/courseid}}{{!
-    }}{{#categoryid}} data-categoryid="{{categoryid}}"{{/categoryid}}{{!
-    }} data-context-id="{{defaulteventcontext}}"{{!
-    }} data-month="{{date.mon}}"{{!
-    }} data-year="{{date.year}}"{{!
-    }} data-view="{{view}}"{{!
-    }}>
+<div
+    class="calendarwrapper"
+    {{#courseid}}data-courseid="{{courseid}}"{{/courseid}}
+    {{#categoryid}}data-categoryid="{{categoryid}}"{{/categoryid}}
+    data-context-id="{{defaulteventcontext}}"
+    data-month="{{date.mon}}"
+    data-year="{{date.year}}"
+    data-view="{{view}}"
+>
     {{> core_calendar/month_navigation }}
     {{> core/overlay_loading}}
     <div class="hours">
@@ -48,111 +40,111 @@
                 <col style="width: 40px;">
                 <col>
             </colgroup>
-                <tbody>
-            <tr style="border-top:solid 1px #ddd">
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">08 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">09 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">10 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">11 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">12 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">13 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">14 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">15 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">16 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">17 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">18 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">19 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
-                    <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">20 h</div>
-                </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
+            <tbody>
+                <tr style="border-top:solid 1px #ddd">
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">08 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">09 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">10 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">11 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">12 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">13 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">14 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">15 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">16 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">17 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">18 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">19 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">20 h</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -161,35 +153,30 @@
         <table id="month-detailed-{{uniqid}}-{{calendarinstanceid}}" class="calendarmonth calendartable mb-0">
             <thead>
                 <tr>
-                    {{# daynames }}
+                    {{#daynames}}
                     <th class="header text-xs-center">
                         <span class="sr-only">{{fullname}}</span>
                         <span aria-hidden="true">{{shortname}}</span>
                     </th>
-                    {{/ daynames }}
+                    {{/daynames}}
                 </tr>
             </thead>
-            </tbody>
             <tbody>
-        {{#week}}
+                {{#week}}
                 <tr data-region="month-view-week">
                     {{#prepadding}}
                         <td class="dayblank">&nbsp;</td>
                     {{/prepadding}}
                     {{#days}}
-                        <td class="day text-sm-center text-md-left{{!
-                                }}{{#istoday}} today{{/istoday}}{{!
-                                }}{{#isweekend}} weekend{{/isweekend}}{{!
-                                }}{{#durationevents.0}} duration{{/durationevents.0}}{{!
-                                }}{{#durationevents}} duration_{{.}}{{/durationevents}}{{!
-                                }}{{#hasevents}} hasevent{{/hasevents}}{{!
-                            }}"
+                        <td class="day text-sm-center text-md-left{{#istoday}} today{{/istoday}}{{#isweekend}} weekend{{/isweekend}}{{#durationevents.0}} duration{{/durationevents.0}}{{#durationevents}} duration_{{.}}{{/durationevents}}{{#hasevents}} hasevent{{/hasevents}}"
                             data-day="{{mday}}"
                             data-day-timestamp="{{timestamp}}"
                             data-drop-zone="week-view-day"
                             data-region="daytime"
-                            data-new-event-timestamp="{{neweventtimestamp}}"{{#istoday}} title="{{#str}} today, core_calendar {{/str}}"{{/istoday}}
-                            {{#hasevents}} data-title="{{viewdaylinktitle}}"{{/hasevents}}>
+                            data-new-event-timestamp="{{neweventtimestamp}}"
+                            {{#istoday}} title="{{#str}} today, core_calendar {{/str}}"{{/istoday}}
+                            {{#hasevents}} data-title="{{viewdaylinktitle}}"{{/hasevents}}
+                        >
                             <div class="d-none d-md-block hidden-phone text-xs-center">
                                 <span class="sr-only">{{daytitle}}</span>
                                 {{#hasevents}}
@@ -215,11 +202,10 @@
                                                     data-event-folded="false"
                                                     data-eventtype-{{normalisedeventtype}}="1"
                                                     style="top:{{eventtop}};height:{{eventheight}};{{eventvisibility}}">
-
-                                                        <span class="calendar-circle calendar_event_{{normalisedeventtype}}">
-                                                            &nbsp;
-                                                        </span>
-                                                        <span class="eventname">{{{name}}}</span>
+                                                    <span class="calendar-circle calendar_event_{{normalisedeventtype}}">
+                                                        &nbsp;
+                                                    </span>
+                                                    <span class="eventname">{{{name}}}</span>
                                                 </li>
                                             {{/underway}}
                                             {{/events}}
@@ -236,10 +222,10 @@
                                         </ul>
                                         <div class="hidden">
                                             {{#events}}
-                                                <div data-popover-eventtype-{{normalisedeventtype}}="1">
-                                                    {{> core_calendar/event_icon}}
-                                                    {{{name}}}
-                                                </div>
+                                            <div data-popover-eventtype-{{normalisedeventtype}}="1">
+                                                {{> core_calendar/event_icon}}
+                                                {{{name}}}
+                                            </div>
                                             {{/events}}
                                         </div>
                                     </div>
@@ -263,7 +249,7 @@
                         <td class="dayblank">&nbsp;</td>
                     {{/postpadding}}
                 </tr>
-        {{/week}}
+                {{/week}}
             </tbody>
         </table>
     </div>

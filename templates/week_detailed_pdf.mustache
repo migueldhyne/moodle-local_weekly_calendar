@@ -21,27 +21,23 @@
 
     The purpose of this template is to render the month view.
 
-    Classes required for JS:
-    * none
+    Classes required for JS: none
+    Data attributes required for JS: none
 
-    Data attributes required for JS:
-    * none
-
-    Example context (json):
-    {
-    }
+    Example context (json): {}
 }}
-<div{{!
-    }} class="calendarwrapper"{{!
-    }}{{#courseid}} data-courseid="{{courseid}}"{{/courseid}}{{!
-    }}{{#categoryid}} data-categoryid="{{categoryid}}"{{/categoryid}}{{!
-    }} data-context-id="{{defaulteventcontext}}"{{!
-    }} data-month="{{date.mon}}"{{!
-    }} data-year="{{date.year}}"{{!
-    }} data-view="{{view}}"{{!
-    }}>
+<div
+    class="calendarwrapper"
+    {{#courseid}}data-courseid="{{courseid}}"{{/courseid}}
+    {{#categoryid}}data-categoryid="{{categoryid}}"{{/categoryid}}
+    data-context-id="{{defaulteventcontext}}"
+    data-month="{{date.mon}}"
+    data-year="{{date.year}}"
+    data-view="{{view}}"
+>
     {{> core_calendar/month_navigation }}
     {{> core/overlay_loading}}
+
     <div class="hours">
         <table aria-hidden="true">
             <colgroup>
@@ -49,121 +45,53 @@
                 <col>
             </colgroup>
             <tbody>
-            <tr style="border-top:solid 1px #ddd">
-                <td>
-                    <div>08 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>09 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>10 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>11 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>12 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>13 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>14 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>15 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>16 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>17 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>18 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>19 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <div>20 h</div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
+                <tr style="border-top:solid 1px #ddd">
+                    <td><div>08 h</div></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr><td><div>09 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>10 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>11 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>12 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>13 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>14 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>15 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>16 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>17 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>18 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>19 h</div></td><td>&nbsp;</td></tr>
+                <tr><td><div>20 h</div></td><td>&nbsp;</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="detailed">
         <table id="month-detailed-{{uniqid}}-{{calendarinstanceid}}" class="calendarmonth calendartable mb-0">
-            {{#daynames}}
             <thead>
                 <tr>
-                    {{# daynames }}
+                    {{#daynames}}
                     <th class="header text-xs-center">
                         <span class="sr-only">{{fullname}}</span>
                         <span aria-hidden="true">{{shortname}}</span>
                     </th>
-                    {{/ daynames }}
+                    {{/daynames}}
                 </tr>
             </thead>
-            {{/daynames}}
             <tbody>
-                ...
-            </tbody>
-        </table>
-            <tbody>
-        {{#week}}
+                {{#week}}
                 <tr data-region="month-view-week">
                     {{#prepadding}}
                         <td class="dayblank">&nbsp;</td>
                     {{/prepadding}}
                     {{#days}}
-                        <td class="day text-sm-center text-md-left{{!
-                                }}{{#istoday}} today{{/istoday}}{{!
-                                }}{{#isweekend}} weekend{{/isweekend}}{{!
-                                }}{{#durationevents.0}} duration{{/durationevents.0}}{{!
-                                }}{{#durationevents}} duration_{{.}}{{/durationevents}}{{!
-                                }}{{#defaulteventcontext}} clickable{{/defaulteventcontext}}{{!
-                                }}{{#hasevents}} hasevent{{/hasevents}}{{!
-                            }}">
+                        <td class="day text-sm-center text-md-left
+                            {{#istoday}} today{{/istoday}}
+                            {{#isweekend}} weekend{{/isweekend}}
+                            {{#durationevents.0}} duration{{/durationevents.0}}
+                            {{#durationevents}} duration_{{.}}{{/durationevents}}
+                            {{#defaulteventcontext}} clickable{{/defaulteventcontext}}
+                            {{#hasevents}} hasevent{{/hasevents}}"
+                        >
                             <div class="d-none d-md-block hidden-phone text-xs-center">
                                 <span class="sr-only">{{daytitle}}</span>
                                 {{#hasevents}}
@@ -176,18 +104,17 @@
                                     <div class="events" data-region="day-content">
                                         <ul>
                                             {{#events}}
-                                            {{#underway}}
-                                                <li class="events-underway">[{{{name}}}]</li>
-                                            {{/underway}}
-                                            {{^underway}}
-                                                <li style="top:{{eventtoppdf}};height:{{eventheightpdf}};{{eventvisibility}}">
-
-                                                    <span class="calendar-circle calendar_event_{{normalisedeventtype}}">
-                                                        &nbsp;
-                                                    </span>
-                                                    <span class="eventname">{{{name}}}</span>
-                                                </li>
-                                            {{/underway}}
+                                                {{#underway}}
+                                                    <li class="events-underway">[{{{name}}}]</li>
+                                                {{/underway}}
+                                                {{^underway}}
+                                                    <li style="top:{{eventtoppdf}};height:{{eventheightpdf}};{{eventvisibility}}">
+                                                        <span class="calendar-circle calendar_event_{{normalisedeventtype}}">
+                                                            &nbsp;
+                                                        </span>
+                                                        <span class="eventname">{{{name}}}</span>
+                                                    </li>
+                                                {{/underway}}
                                             {{/events}}
                                         </ul>
                                         <div class="hidden">
@@ -207,7 +134,7 @@
                         <td class="dayblank">&nbsp;</td>
                     {{/postpadding}}
                 </tr>
-        {{/week}}
+                {{/week}}
             </tbody>
         </table>
     </div>

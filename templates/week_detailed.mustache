@@ -161,20 +161,15 @@
         <table id="month-detailed-{{uniqid}}-{{calendarinstanceid}}" class="calendarmonth calendartable mb-0">
             <thead>
                 <tr>
-                    {{#daynames}}
-                    <thead>
-                        <tr>
-                            {{# daynames }}
-                            <th class="header text-xs-center">
-                                <span class="sr-only">{{fullname}}</span>
-                                <span aria-hidden="true">{{shortname}}</span>
-                            </th>
-                            {{/ daynames }}
-                        </tr>
-                    </thead>
-                    {{/daynames}}
+                    {{# daynames }}
+                    <th class="header text-xs-center">
+                        <span class="sr-only">{{fullname}}</span>
+                        <span aria-hidden="true">{{shortname}}</span>
+                    </th>
+                    {{/ daynames }}
                 </tr>
             </thead>
+            </tbody>
             <tbody>
         {{#week}}
                 <tr data-region="month-view-week">

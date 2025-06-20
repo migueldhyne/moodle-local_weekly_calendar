@@ -40,7 +40,7 @@
     {{> local_weekly_calendar/week_detailed}}
 </div>
 {{#js}}
-require(['jquery', 'core_calendar/calendar', 'core_calendar/popover'], function($, Calendar, calendarPopover) {
+require(['jquery', 'core_calendar/calendar', 'core_calendar/popover'], function($, Calendar) {
     Calendar.init($("#calendar-month-{{uniqid}}-{{calendarinstanceid}}"));
 });
 {{/js}}

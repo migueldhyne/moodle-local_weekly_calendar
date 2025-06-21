@@ -32,8 +32,6 @@ use moodle_url;
  * Class for displaying the week view.
  *
  * @package     local_weekly_calendar
- * @copyright   2024 Patrick ROCHET <prochet.94@free.fr>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class week_exporter extends exporter {
 
@@ -43,56 +41,41 @@ class week_exporter extends exporter {
     /** @var int This calendar instance's ID. */
     protected $calendarinstanceid = 0;
 
-    /**
-     * @var \calendar_information $calendar The calendar to be rendered.
-     */
+    /** @var \calendar_information The calendar to be rendered. */
     protected $calendar;
 
-    /**
-     * @var int $firstdayofweek The first day of the week.
-     */
+    /** @var int The first day of the week. */
     protected $firstdayofweek;
 
-    /**
-     * @var moodle_url $url The URL for the events page.
-     */
+    /** @var moodle_url The URL for the events page. */
     protected $url;
 
-    /**
-     * @var bool $includenavigation Whether navigation should be included on the output.
-     */
+    /** @var bool Whether navigation should be included in the output. */
     protected $includenavigation = true;
 
-    /**
-     * @var bool $initialeventsloaded Whether the events have been loaded for this month.
-     */
+    /** @var bool Whether the events have been loaded for this week. */
     protected $initialeventsloaded = true;
 
-    /**
-     * @var bool $showcoursefilter Whether to render the course filter selector as well.
-     */
+    /** @var bool Whether to render the course filter selector as well. */
     protected $showcoursefilter = false;
 
     /**
-     * Constructor for month_exporter.
+     * Constructor.
      *
-     * @param \calendar_information $calendar The calendar being represented
-     * @param \core_calendar\type_base $type The calendar type (e.g. Gregorian)
-     * @param array $related The related information
+     * @param \calendar_information      $calendar The calendar being represented.
+     * @param \core_calendar\type_base   $type     The calendar type (e.g. Gregorian).
+     * @param array                      $related  The related information.
      */
     public function __construct(\calendar_information $calendar, \core_calendar\type_base $type, $related) {
-        // Increment the calendar instances count on initialisation.
         self::$calendarinstances++;
-        // Assign this instance an ID based on the latest calendar instances count.
         $this->calendarinstanceid = self::$calendarinstances;
         $this->calendar = $calendar;
         $this->firstdayofweek = $type->get_starting_weekday();
 
         $this->url = new moodle_url('/local/weekly_calendar/view.php', [
-                'view' => 'week',
-                'time' => $calendar->time,
-            ]);
-
+            'view' => 'week',
+            'time' => $calendar->time,
+        ]);
         if ($this->calendar->course && SITEID !== $this->calendar->course->id) {
             $this->url->param('course', $this->calendar->course->id);
         } else if ($this->calendar->categoryid) {
@@ -101,11 +84,7 @@ class week_exporter extends exporter {
 
         $related['type'] = $type;
 
-        $data = [
-            'url' => $this->url->out(false),
-        ];
-
-        parent::__construct($data, $related);
+        parent::__construct(['url' => $this->url->out(false)], $related);
     }
 
     /**
@@ -140,9 +119,10 @@ class week_exporter extends exporter {
                 'type' => PARAM_RAW,
                 'optional' => true,
             ],
+            // NOTE : week n'est plus "multiple". On exporte UN objet semaine,
+            // qui contient lui-même days, prepadding, postpadding.
             'week' => [
                 'type' => PARAM_RAW,
-                'multiple' => true,
             ],
             'daynames' => [
                 'type' => \core_calendar\external\day_name_exporter::read_properties_definition(),
@@ -155,16 +135,12 @@ class week_exporter extends exporter {
                 'type' => \core_calendar\external\date_exporter::read_properties_definition(),
             ],
             'periodname' => [
-                // Note: We must use RAW here because the calendar type returns the formatted month name based on a
-                // calendar format.
                 'type' => PARAM_RAW,
             ],
             'includenavigation' => [
                 'type' => PARAM_BOOL,
                 'default' => true,
             ],
-            // Tracks whether the first set of events have been loaded and provided
-            // to the exporter.
             'initialeventsloaded' => [
                 'type' => PARAM_BOOL,
                 'default' => true,
@@ -176,27 +152,21 @@ class week_exporter extends exporter {
                 'type' => PARAM_URL,
             ],
             'previousperiodname' => [
-                // Note: We must use RAW here because the calendar type returns the formatted month name based on a
-                // calendar format.
                 'type' => PARAM_RAW,
             ],
             'nextperiod' => [
                 'type' => \core_calendar\external\date_exporter::read_properties_definition(),
             ],
             'nextperiodname' => [
-                // Note: We must use RAW here because the calendar type returns the formatted month name based on a
-                // calendar format.
                 'type' => PARAM_RAW,
             ],
             'nextperiodlink' => [
                 'type' => PARAM_URL,
             ],
             'larrow' => [
-                // The left arrow defined by the theme.
                 'type' => PARAM_RAW,
             ],
             'rarrow' => [
-                // The right arrow defined by the theme.
                 'type' => PARAM_RAW,
             ],
             'defaulteventcontext' => [
@@ -240,7 +210,7 @@ class week_exporter extends exporter {
 
         $return = [
             'courseid' => $this->calendar->courseid,
-            'week' => $this->get_week($output),
+            'week' => $this->get_week($output),  // un objet semaine, pas un tableau
             'daynames' => $this->get_day_names($output),
             'view' => $viewmode,
             'date' => (new \core_calendar\external\date_exporter($date))->export($output),
@@ -264,11 +234,9 @@ class week_exporter extends exporter {
         if ($this->showcoursefilter) {
             $return['filter_selector'] = $this->get_course_filter_selector($output);
         }
-
         if ($context = $this->get_default_add_context()) {
             $return['defaulteventcontext'] = $context->id;
         }
-
         if ($this->calendar->categoryid) {
             $return['categoryid'] = $this->calendar->categoryid;
         }
@@ -283,18 +251,14 @@ class week_exporter extends exporter {
      * @return string The html code for the course filter selector.
      */
     protected function get_course_filter_selector(renderer_base $output) {
-        $content = '';
-        $content .= $output->course_filter_selector($this->url, '', $this->calendar->course->id, $this->calendarinstanceid);
-
-        return $content;
+        return $output->course_filter_selector($this->url, '', $this->calendar->course->id, $this->calendarinstanceid);
     }
 
     /**
-     * Get the list of day names for display, re-ordered from the first day
-     * of the week.
+     * Get the list of day names for display, re-ordered from the first day of the week.
      *
-     * @param   renderer_base $output
-     * @return  day_name_exporter[]
+     * @param renderer_base $output
+     * @return array
      */
     protected function get_day_names(renderer_base $output) {
         $weekdays = $this->related['type']->get_weekdays();
@@ -302,20 +266,18 @@ class week_exporter extends exporter {
 
         $daynames = [];
         for ($i = 0; $i < $daysinweek; $i++) {
-            // Bump the currentdayno and ensure it loops.
             $dayno = ($i + $this->firstdayofweek + $daysinweek) % $daysinweek;
             $dayname = new \core_calendar\external\day_name_exporter($dayno, $weekdays[$dayno]);
             $daynames[] = $dayname->export($output);
         }
-
         return $daynames;
     }
 
     /**
-     * Get week.
+     * Get the week structure for the current week.
      *
-     * @param   renderer_base $output
-     * @return  array
+     * @param renderer_base $output
+     * @return object
      */
     protected function get_week(renderer_base $output) {
         global $CFG;
@@ -334,13 +296,12 @@ class week_exporter extends exporter {
         $numberofdaysinweek = $this->related['type']->get_num_weekdays();
 
         $date = $this->related['type']->timestamp_to_date_array($this->calendar->time);
-        $timestamp = $this->related['type']->convert_to_timestamp($date['year'], $date['mon'], $date['mday']);
-        // Firstday must be the first day of the current week.
         $currentwday = $date['wday'];
         $firstday = $date['mday'] - $currentwday + 1;
+
+        // Génère les jours de la semaine.
         $days = [];
         for ($dayno = $firstday; $dayno < $firstday + 7; $dayno++) {
-            // Get the gregorian representation of the day.
             $timestamp = $this->related['type']->convert_to_timestamp($date['year'], $date['mon'], $dayno);
             $days[] = $this->related['type']->timestamp_to_date_array($timestamp);
         }
@@ -355,21 +316,16 @@ class week_exporter extends exporter {
                 $enddate = $this->related['type']->timestamp_to_date_array($endtime);
 
                 if ((($startdate['year'] * 366) + $startdate['yday']) > ($daydata['year'] * 366) + $daydata['yday']) {
-                    // Starts after today.
                     continue;
                 }
                 if ((($enddate['year'] * 366) + $enddate['yday']) < ($daydata['year'] * 366) + $daydata['yday']) {
-                    // Ends before today.
                     continue;
                 }
                 $events[] = $event;
             }
 
-            $istoday = true;
-            $istoday = $istoday && $today['year'] == $daydata['year'];
-            $istoday = $istoday && $today['yday'] == $daydata['yday'];
+            $istoday = ($today['year'] == $daydata['year']) && ($today['yday'] == $daydata['yday']);
             $daydata['istoday'] = $istoday;
-
             $daydata['isweekend'] = !!($weekend & (1 << ($daydata['wday'] % $numberofdaysinweek)));
 
             $day = new \local_weekly_calendar\external\week_day_exporter($this->calendar, $daydata, [
@@ -377,7 +333,6 @@ class week_exporter extends exporter {
                 'cache' => $this->related['cache'],
                 'type' => $this->related['type'],
             ]);
-
             $return->days[] = $day->export($output);
         }
 
@@ -396,6 +351,7 @@ class week_exporter extends exporter {
             'type' => '\core_calendar\type_base',
         ];
     }
+
     /**
      * Fetches all the events for a given week.
      *
@@ -418,7 +374,7 @@ class week_exporter extends exporter {
                 break;
             case 'previous':
                 $time = $currenttime - ($wday - 1) * $onedaytime - $oneweektime;
-            break;
+                break;
         }
         $data = $type->timestamp_to_date_array($time);
 
@@ -432,7 +388,6 @@ class week_exporter extends exporter {
      * @return string The formatted period name (e.g. "Mar 1 – Mar 7, 2025").
      */
     protected function get_period_name($starttime) {
-        $periodname = "";
         $onedaytime = 60 * 60 * 24;
         $endtime = $starttime + 6 * $onedaytime;
         $daystarttime = userdate($starttime, '%d');
@@ -442,50 +397,29 @@ class week_exporter extends exporter {
         $yearstarttime = userdate($starttime, '%Y');
         $yearendtime = userdate($endtime, '%Y');
         if ($monthstarttime == $monthendtime) {
-            $periodname = "$daystarttime - $dayendtime $monthstarttime $yearstarttime";
+            return "$daystarttime - $dayendtime $monthstarttime $yearstarttime";
+        } else if ($yearstarttime == $yearendtime) {
+            return "$daystarttime $monthstarttime - $dayendtime $monthendtime $yearstarttime";
         } else {
-            if ($yearstarttime == $yearendtime) {
-                $periodname = "$daystarttime $monthstarttime - $dayendtime $monthendtime $yearstarttime";
-            } else {
-                $periodname = "$daystarttime $monthstarttime $yearstarttime - $dayendtime $monthendtime $yearendtime";
-            }
+            return "$daystarttime $monthstarttime $yearstarttime - $dayendtime $monthendtime $yearendtime";
         }
-        return $periodname;
     }
 
-    /**
-     * Set whether the navigation should be shown.
-     *
-     * @param   bool    $include
-     * @return  $this
-     */
+    /** Set whether the navigation should be shown. */
     public function set_includenavigation($include) {
         $this->includenavigation = $include;
         return $this;
     }
 
-    /**
-     * Set whether the initial events have already been loaded and
-     * provided to the exporter.
-     *
-     * @param   bool    $loaded
-     * @return  $this
-     */
+    /** Set whether the initial events have already been loaded and provided to the exporter. */
     public function set_initialeventsloaded(bool $loaded) {
         $this->initialeventsloaded = $loaded;
-
         return $this;
     }
 
-    /**
-     * Set whether the course filter selector should be shown.
-     *
-     * @param   bool    $show
-     * @return  $this
-     */
+    /** Set whether the course filter selector should be shown. */
     public function set_showcoursefilter(bool $show) {
         $this->showcoursefilter = $show;
-
         return $this;
     }
 
@@ -495,10 +429,9 @@ class week_exporter extends exporter {
      * @return null|\context
      */
     protected function get_default_add_context() {
-        if (calendar_user_can_add_event($this->calendar->course)) {
+        if (!empty($this->calendar->course) && calendar_user_can_add_event($this->calendar->course)) {
             return \context_course::instance($this->calendar->course->id);
         }
-
         return null;
     }
 }

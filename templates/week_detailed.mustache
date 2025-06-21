@@ -1,23 +1,12 @@
 {{!
     This file is part of Moodle - http://moodle.org/
-
-    Moodle is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Moodle is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+    ... [LICENSE, ETC]
 }}
 {{!
     @template calendar/month_detailed
 
     Calendar month view.
+
     The purpose of this template is to render the month view.
     Classes required for JS: none
     Data attributes required for JS: none
@@ -41,19 +30,17 @@
                 <col>
             </colgroup>
             <tbody>
-                <tr style="border-top:solid 1px #ddd"><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">08 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">09 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">10 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">11 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">12 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">13 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">14 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">15 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">16 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">17 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">18 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">19 h</div></div></td><td>&nbsp;</td></tr>
-                <tr><td><div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame"><div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">20 h</div></div></td><td>&nbsp;</td></tr>
+                {{! Génération des tr pour chaque heure }}
+                {{#hours}}
+                <tr>
+                    <td>
+                        <div class="fc-timegrid-slot-label-frame fc-scrollgrid-shrink-frame">
+                            <div class="fc-timegrid-slot-label-cushion fc-scrollgrid-shrink-cushion">{{.}}</div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                {{/hours}}
             </tbody>
         </table>
     </div>
@@ -71,11 +58,12 @@
                 </tr>
             </thead>
             <tbody>
+                {{#week}}
                 <tr data-region="month-view-week">
-                    {{#week.prepadding}}
+                    {{#prepadding}}
                         <td class="dayblank">&nbsp;</td>
-                    {{/week.prepadding}}
-                    {{#week.days}}
+                    {{/prepadding}}
+                    {{#days}}
                         <td class="day text-sm-center text-md-left{{#istoday}} today{{/istoday}}{{#isweekend}} weekend{{/isweekend}}{{#durationevents.0}} duration{{/durationevents.0}}{{#durationevents}} duration_{{.}}{{/durationevents}}{{#hasevents}} hasevent{{/hasevents}}"
                             data-day="{{mday}}"
                             data-day-timestamp="{{timestamp}}"
@@ -153,11 +141,12 @@
                                 {{/hasevents}}
                             </div>
                         </td>
-                    {{/week.days}}
-                    {{#week.postpadding}}
+                    {{/days}}
+                    {{#postpadding}}
                         <td class="dayblank">&nbsp;</td>
-                    {{/week.postpadding}}
+                    {{/postpadding}}
                 </tr>
+                {{/week}}
             </tbody>
         </table>
     </div>

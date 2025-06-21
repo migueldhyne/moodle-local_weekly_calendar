@@ -71,12 +71,11 @@
                 </tr>
             </thead>
             <tbody>
-                {{#week}}
                 <tr data-region="month-view-week">
-                    {{#prepadding}}
+                    {{#week.prepadding}}
                         <td class="dayblank">&nbsp;</td>
-                    {{/prepadding}}
-                    {{#days}}
+                    {{/week.prepadding}}
+                    {{#week.days}}
                         <td class="day text-sm-center text-md-left{{#istoday}} today{{/istoday}}{{#isweekend}} weekend{{/isweekend}}{{#durationevents.0}} duration{{/durationevents.0}}{{#durationevents}} duration_{{.}}{{/durationevents}}{{#hasevents}} hasevent{{/hasevents}}"
                             data-day="{{mday}}"
                             data-day-timestamp="{{timestamp}}"
@@ -154,12 +153,11 @@
                                 {{/hasevents}}
                             </div>
                         </td>
-                    {{/days}}
-                    {{#postpadding}}
+                    {{/week.days}}
+                    {{#week.postpadding}}
                         <td class="dayblank">&nbsp;</td>
-                    {{/postpadding}}
+                    {{/week.postpadding}}
                 </tr>
-                {{/week}}
             </tbody>
         </table>
     </div>
